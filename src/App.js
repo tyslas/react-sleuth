@@ -1,11 +1,12 @@
 import React, {
   Component
 } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Tester from './components/Tester'
 import History from './components/History'
-import Rank from './components/Rank'
+import Rank from './components/RankBG/RankList/Rank/Rank'
+import RankList from './components/RankBG/RankList/RankList'
+import RankBG from './components/RankBG/RankBG'
 
 const data = {
   car: {
@@ -39,7 +40,7 @@ class App extends Component {
       <header>Sleuth</header>
       <Tester data={this.state.data} fun={this.fun}/>
       <History />
-      <Rank />
+      <RankBG />
       </div>
     );
   }
