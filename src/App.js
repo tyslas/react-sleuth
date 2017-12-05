@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Tester from './components/Tester'
 import History from './components/History'
-import Rank from './components/Rank'
 import speedTest from './speedTest'
+import Rank from './components/RankBG/RankList/Rank/Rank'
+import RankList from './components/RankBG/RankList/RankList'
+import RankBG from './components/RankBG/RankBG'
 
 // http://ip-api.com/json/
 
@@ -76,31 +77,39 @@ class App extends Component {
                       speedTest().then(speed => {
                         allSpeeds.push(speed)
                         let data = [];
-                        allSpeeds.forEach(function(i){
+                        allSpeeds.forEach(function(i) {
                           data.push(Number(i))
                         })
-                           data.sort((a, b) => a - b);
-                           console.log(data);
-                           let lowMiddle = Math.floor((data.length - 1) / 2);
-                           let highMiddle = Math.ceil((data.length - 1) / 2);
-                           let median = (data[lowMiddle] + data[highMiddle]) / 2;
+                        data.sort((a, b) => a - b);
+                        console.log(data);
+                        let lowMiddle = Math.floor((data.length - 1) / 2);
+                        let highMiddle = Math.ceil((data.length - 1) / 2);
+                        let median = (data[lowMiddle] + data[highMiddle]) / 2;
 
-                           newTest.speed = median
-                           this.setState({testResults: newTest,
-                           calculating: false})
-                          console.log(median);
-                        })})})})})})})})})})}
-
-
-
-    render() {
-      return (<div>
-        <header>Sleuth</header>
-        <Tester testSpeed={this.state.testResults.speed} runTest={this.runTest} calculating={this.state.calculating}/>
-        <History/>
-        <Rank/>
-      </div>);
-    }
+                        newTest.speed = median
+                        this.setState({testResults: newTest, calculating: false})
+                        console.log(median);
+                      })
+                    })
+                  })
+                })
+              })
+            })
+          })
+        })
+      })
+    })
   }
 
-  export default App;
+  render() {
+    return (<div>
+      <header>Sleuth</header>
+      <Tester testSpeed={this.state.testResults.speed} runTest={this.runTest} calculating={this.state.calculating}/>
+      <History/>
+      <RankBG/>
+    </div>);
+  }
+
+}
+
+export default App;
