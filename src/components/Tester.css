@@ -1,0 +1,33 @@
+.border-tester{
+  width:30vw;
+  height: 30vh;
+  border: 1px solid #eee;
+}
+
+.test-running{
+  width:30vw;
+  height: 30vh;
+}
+
+.while-running {
+  font-size: 20px;
+  color: grey;
+}
+
+.done-running{
+  font-size: 22px;
+  color: black;
+  font-weight: bold;
+}
+
+.aligner{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*.info-tester{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}*/
