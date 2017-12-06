@@ -3,13 +3,9 @@ import './App.css';
 import Tester from './components/Tester'
 import History from './components/History'
 import speedTest from './speedTest'
-import Rank from './components/RankBG/RankList/Rank/Rank'
-import RankList from './components/RankBG/RankList/RankList'
 import RankBG from './components/RankBG/RankBG'
 
 // http://ip-api.com/json/
-
-const api = '';
 
 class App extends Component {
   constructor() {
@@ -32,25 +28,19 @@ class App extends Component {
   }
 
   // async componentDidMount() {
-  //   const response = await fetch(api)
+  //   const response = await fetch("https://galvanize-cors-proxy.herokuapp.com/https://infinite-beach-55234.herokuapp.com/tests/isp/Zayo%20Bandwidth")
   //   const json = await response.json()
-  //   this.setState({data: json["_embedded"].tests})
+  //   console.log(json);
+  //   // this.setState({data: json["_embedded"].tests})
   // }
   //
   async addItem(data) {
-    // let testData = {
-    //   ip: '128.177.113.102',
-    //   dl_speed: 20.56,
-    //   name: "Zayo Bandwidth",
-    //   lat: "39.7525",
-    //   long: "-104.9995"
-    // }
-    const response = await fetch("https://infinite-beach-55234.herokuapp.com/tests/", {
+    const response = await fetch("https://galvanize-cors-proxy.herokuapp.com/https://infinite-beach-55234.herokuapp.com/tests/", {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/x-www-form-urlencoded'
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
       }
     })
     // this.componentDidMount();
@@ -86,10 +76,12 @@ class App extends Component {
           this.setState({connection: true})
           let newSpeeds = [...this.state.allSpeeds];
           newSpeeds.push(Number(speed))
+          let newIndex = this.state.packetIndex;
+          newIndex++
           this.setState({
             allSpeeds: newSpeeds,
             currentSpeed: speed,
-            packetIndex: this.state.packetIndex++
+            packetIndex: newIndex
           })
         }
       })

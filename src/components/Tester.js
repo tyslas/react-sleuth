@@ -21,18 +21,18 @@ class Tester extends Component {
     if (this.props.calculating) {
       this.props.runTest();
       return (<div className="aligner">
-        <img className="card-img-top test-running" src={this.selectGif()}/>
+        <img className="card-img-top test-running" src={this.selectGif()} alt="sleuth"/>
         <p className="while-running">{this.props.currentSpeed} Mbps</p>
       </div>)
     } else {
       if(this.props.connection === false){
         return (<div className="aligner">
-          <img className="card-img-top test-running" src='https://c402277.ssl.cf1.rackcdn.com/photos/6526/images/hero_small/sloth_%28c%29_Jorge_Salas_International_Expeditions.JPG?1394634201'/>
+          <img className="card-img-top test-running" src='https://c402277.ssl.cf1.rackcdn.com/photos/6526/images/hero_small/sloth_%28c%29_Jorge_Salas_International_Expeditions.JPG?1394634201' alt="sleuth"/>
           <p>Check your Interent Connection</p>
         </div>)
       }
       return (<div className="aligner">
-        <img className="card-img-top test-running" src="https://media.mnn.com/assets/images/2017/01/Sloth-Hanging-Tree-Branch.jpg.638x0_q80_crop-smart.jpg" />
+        <img className="card-img-top test-running" src="https://media.mnn.com/assets/images/2017/01/Sloth-Hanging-Tree-Branch.jpg.638x0_q80_crop-smart.jpg" alt="sleuth"/>
         <p className="done-running">{this.props.testSpeed} Mbps</p>
       </div>)
     }

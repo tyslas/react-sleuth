@@ -15,18 +15,18 @@ function speedTest(index) {
 
   function ShowProgressMessage(msg) {
     if (console) {
-      if (typeof msg == "string") {
-        console.log(msg);
+      if (typeof msg === "string") {
+        // console.log(msg);
       } else {
         for (var i = 0; i < msg.length; i++) {
-          console.log(msg[i]);
+          // console.log(msg[i]);
         }
       }
     }
 
     var oProgress = document.getElementById("progress");
     if (oProgress) {
-      var actualHTML = (typeof msg == "string")
+      var actualHTML = (typeof msg === "string")
         ? msg
         : msg.join("<br />");
       oProgress.innerHTML = actualHTML;
