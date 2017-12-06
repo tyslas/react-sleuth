@@ -1,48 +1,34 @@
 import React, {Component} from 'react'
-import classes from './RankList.css'
+import './RankList.css'
 import Rank from './Rank/Rank'
 
-const obj1 = {
-  name: "XFINITY",
-  dl_avg: 65
-}
-const obj2 = {
-  name: "Century Link",
-  dl_avg: 30
-}
-const obj3 = {
-  name: "zayo",
-  dl_avg: 95
-}
-const obj4 = {
-  name: "verizon",
-  dl_avg: 100
-}
-const obj5 = {
-  name: "time warner",
-  dl_avg: 12
-}
-
-
 class RankList extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      data: [],
+      siteList: ["XFINITY","Century Link","Zayo Bandwidth"]
+    }
+  }
+  async componentDidMount(){
+    this.getRanking()
+  }
 
-  order = () => {
-    let arr = []
-    let xf = obj1;
-    let cl = obj2;
-    let z = obj3;
-    let v = obj4;
-    let tw = obj5;
-    arr.push(xf, cl, z, v, tw)
-    let ordered = arr.sort(function(a, b) {
+  async getRanking(){
+    let tempData = []
+    for(var i=0;i<this.state.siteList.length;i++){
+      const response = await fetch("https://galvanize-cors-proxy.herokuapp.com/https://infinite-beach-55234.herokuapp.com/tests/isp/" + this.state.siteList[i])
+      const json = await response.json()
+      tempData.push(json)
+    }
+    let ordered = tempData.sort(function(a, b) {
       return b.dl_avg - a.dl_avg
     })
-    return ordered
+    this.setState({data: ordered})
   }
 
   render() {
-    const order = this.order();
-
+    const order = this.state.data;
     return order.map((rank, index) => {
       return (
         <div>
@@ -50,7 +36,8 @@ class RankList extends Component {
             name={rank.name}
             dl_avg={rank.dl_avg}
             key={index}
-            position={index+1} />
+            position={index+1}
+          />
         </div>
       )
     })
