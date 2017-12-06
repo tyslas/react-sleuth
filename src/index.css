@@ -2,4 +2,29 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background: #628193;
+}
+
+.logo {
+  margin: 15px 0px 0 22px;
+  width: 70%;
+  max-width: 300px;
+  min-width: 100px;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  background: #628193;
+}
+
+.btn-container {
+  display: flex;
+  width: 50%;
+  justify-content: flex-end;
+  height: 20%;
+  padding: 55px 15px 0 0;
 }

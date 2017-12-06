@@ -37,7 +37,6 @@ class App extends Component {
 
   render() {
     return ( <div>
-      <header>Sleuth</header>
       <Tester data={this.state.data} fun={this.fun}/>
       <History />
       <RankBG />
