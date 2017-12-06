@@ -110,6 +110,7 @@ class App extends Component {
   }
 
   render() {
+
     return (<div>
       <header>Sleuth</header>
       <div className="top-main">
