@@ -6,7 +6,8 @@ class Tester extends Component {
     let gifs = [
       // "http://gifimage.net/wp-content/uploads/2017/08/loading-gif-transparent-4.gif",
       // "https://media.giphy.com/media/xTk9ZvMnbIiIew7IpW/giphy.gif",
-      "http://i.giftrunk.com/44frgm.gif",
+      // "http://i.giftrunk.com/44frgm.gif",
+      "http://media2.giphy.com/media/xT9DPxggC8w6kCWVY4/giphy.gif",
       // "https://www.demilked.com/magazine/wp-content/uploads/2016/06/gif-animations-replace-loading-screen-14.gif"
     ]
     let num = Math.floor(Math.random() * gifs.length);

@@ -5,26 +5,43 @@ body {
   background: #628193;
 }
 
-.logo {
-  margin: 15px 0px 0 22px;
-  width: 70%;
-  max-width: 300px;
-  min-width: 100px;
-}
-
 header {
+  /*border: 2px solid green;*/
   display: flex;
   flex-direction: row;
   width: 100%;
   margin-bottom: 20px;
   padding-bottom: 10px;
   background: #628193;
+  align-items: center;
 }
+
+.logo-container{
+  /*border: 2px solid purple;*/
+  width: 50%;
+}
+
+.logo {
+  margin: 15px 0px 0 22px;
+}
+
 
 .btn-container {
   display: flex;
   width: 50%;
   justify-content: flex-end;
-  height: 20%;
+  /*border: 2px solid white;*/
   padding: 55px 15px 0 0;
+}
+
+.chrome-ext{
+  font-family: 'Open Sans', sans-serif;
+}
+
+.history_container {
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  height: 260px;
+  width: 100%;
 }
