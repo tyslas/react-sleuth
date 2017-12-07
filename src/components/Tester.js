@@ -39,13 +39,21 @@ class Tester extends Component {
     }
   }
 
+  checkDisabled() {
+    if(this.props.calculating){
+      return "disabled"
+    }else{
+      return ""
+    }
+  }
+
   render() {
     return (<div className="card border-tester">
       {this.isCalculating()}
       <div className="card-body aligner">
         {/* <h4 className="card-title">Run Sleuth</h4> */}
       <form onSubmit={this.props.calculate}>
-        <button className="btn btn-primary">Run Sleuth</button>
+        <button disabled={this.checkDisabled()} className="btn btn-primary">Run Sleuth</button>
       </form>
         {/* {this.isCalculating()} */}
     </div>
