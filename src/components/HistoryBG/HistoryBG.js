@@ -23,7 +23,7 @@ class HistoryBG extends Component {
 
   render() {
     return (
-      <div>
+      <div className="historyBG-container">
         <h1>Returning data for IP: {this.state.ipAddress}</h1>
         <div className="history_container">
           <HistoryList />

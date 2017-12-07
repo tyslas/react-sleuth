@@ -37,11 +37,17 @@ header {
 .chrome-ext{
   font-family: 'Open Sans', sans-serif;
 }
+.historyBG-container{
+  margin: -25px 0 0 0;
+  border: 5px solid #939F75;
+  padding: 11px;
+  border-radius: 30px;
+}
 
 .history_container {
   display: flex;
   flex-direction: column;
   overflow: scroll;
-  height: 260px;
+  height: 360px;
   width: 100%;
 }

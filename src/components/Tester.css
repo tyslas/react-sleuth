@@ -1,17 +1,11 @@
-.border-tester{
-  width:30vw;
-  height: 30vh;
-  border: 1px solid #eee;
-}
-
 .test-running{
-  width:30vw;
-  height: 30vh;
+  width: 90%;
+  height: auto;
 }
 
 .while-running {
   font-size: 20px;
-  color: grey;
+  color: white;
 }
 
 .done-running{
@@ -25,9 +19,3 @@
   flex-direction: column;
   align-items: center;
 }
-
-/*.info-tester{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}*/

@@ -33,18 +33,40 @@ class HistoryList extends Component {
 
   timeStampFormat(){
     var dateArr = []
+    var formatDateArr = []
     for(var i=0;i<this.state.ipHistory.length;i++){
       var jsonDate = this.state.ipHistory[i].timestamp
       var date = new Date(jsonDate);
-      var strDate = "" + date
-      dateArr.push(strDate)
+      var dateYear = date.getFullYear()
+      var dateMonth = date.getMonth() + 1
+      var dateDay = date.getDate()
+      var nightDay = "AM"
+      if(date.getHours()<12){
+        nightDay = "AM"
+      }else{
+        nightDay = "PM"
+      }
+      var timeHours = (date.getHours()<10?'0':'') + date.getHours()
+      var timeMinutes = (date.getMinutes()<10?'0':'') + date.getMinutes() + " " + nightDay
+      var formattedDate = dateMonth + "/" + dateDay + "/" +dateYear + " " + timeHours + ":" + timeMinutes
+      dateArr.push(formattedDate)
     }
-    this.setState({timeStampFormatted: dateArr})
+
+    for(var i = dateArr.length; i--;){
+      formatDateArr.push(dateArr[i])
+    }
+
+    this.setState({timeStampFormatted: formatDateArr})
   }
+
 
   render() {
     const historyList = this.state.ipHistory
-    return historyList.map((ip,index)=>{
+    const reversedHistList = []
+    for(var i = historyList.length; i--;){
+      reversedHistList.push(historyList[i])
+    }
+    return reversedHistList.map((ip,index)=>{
       return (
         <History
           dl_speed={ip.dl_speed}
