@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import classes from './Rank.css'
+import React from 'react';
+import './Rank.css'
 
 const Rank = (props) => {
     return (
@@ -9,7 +9,6 @@ const Rank = (props) => {
         </ul>
       </div>
     );
-
 }
 
 export default Rank;
