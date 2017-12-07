@@ -112,7 +112,6 @@ class App extends Component {
   render() {
 
     return (<div>
-      <header>Sleuth</header>
       <div className="top-main">
         <Tester testSpeed={this.state.testResults.speed} currentSpeed={this.state.currentSpeed} runTest={this.runTest.bind(this)} calculate={this.calculate} calculating={this.state.calculating} connection={this.state.connection}/>
         <History/>
