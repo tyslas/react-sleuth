@@ -33,13 +33,24 @@ class HistoryList extends Component {
 
   timeStampFormat(){
     var dateArr = []
+    var formatDateArr = []
     for(var i=0;i<this.state.ipHistory.length;i++){
       var jsonDate = this.state.ipHistory[i].timestamp
       var date = new Date(jsonDate);
-      var strDate = "" + date
-      dateArr.push(strDate)
+      var dateYear = date.getFullYear()
+      var dateMonth = date.getMonth() + 1
+      var dateDay = date.getDate()
+      var timeHours = (date.getUTCHours()<10?'0':'') + date.getUTCHours()
+      var timeMinutes = (date.getUTCMinutes()<10?'0':'') + date.getUTCMinutes()
+      var formatedDate = dateMonth + "/" + dateDay + "/" +dateYear + " " + timeHours + ":" + timeMinutes
+      dateArr.push(formatedDate)
     }
-    this.setState({timeStampFormatted: dateArr})
+
+    for(var i = dateArr.length; i--;){
+      formatDateArr.push(dateArr[i])
+    }
+    
+    this.setState({timeStampFormatted: formatDateArr})
   }
 
   render() {
