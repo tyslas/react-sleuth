@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import Tester from './components/Tester'
 import speedTest from './speedTest'
-import RankBG from './components/RankBG/RankBG'
+import RankList from './components/RankBG/RankList/RankList'
 import HistoryGB from './components/HistoryBG/HistoryBG'
 
 class App extends Component {
@@ -21,7 +21,9 @@ class App extends Component {
       allSpeeds: [],
       currentSpeed: 0,
       connection: true,
-      packetIndex: 0
+      packetIndex: 0,
+      ranks: [],
+      siteList: []
     }
   }
 
@@ -32,6 +34,8 @@ class App extends Component {
     let newIp = json.origin.split(',')
     newResults.IP = newIp[0];
     this.setState({testResults: newResults})
+
+    this.getRanking()
   }
 
   async addItem(data) {
@@ -45,6 +49,34 @@ class App extends Component {
     })
   }
 
+  async getRanking() {
+    await this.getIsps()
+    let tempData = []
+    console.log('begin getRanking');
+    console.log(this.state.siteList);
+    for (var i = 0; i < this.state.siteList.length; i++) {
+      if(this.state.siteList[i] === ""){
+        continue;
+      }
+      console.log(this.state.siteList[i]);
+      const response = await fetch("https://galvanize-cors-proxy.herokuapp.com/https://infinite-beach-55234.herokuapp.com/tests/isp/" + this.state.siteList[i])
+      const json = await response.json()
+      tempData.push(json)
+    }
+    let ordered = tempData.sort(function(a, b) {
+      return b.dl_avg - a.dl_avg
+    })
+    this.setState({ranks: ordered})
+  }
+
+  async getIsps(){
+    let newSites = this.state.siteList;
+    const response = await  fetch("https://galvanize-cors-proxy.herokuapp.com/https://infinite-beach-55234.herokuapp.com/tests/service/isps")
+    const json = await response.json()
+    newSites = json.name.map(x => x.name);
+    this.setState({siteList: newSites})
+  }
+
   async getISP() {
     let newResults = this.state.testResults;
     const response = await fetch('https://galvanize-cors-proxy.herokuapp.com/http://ip-api.com/json/' + newResults.IP)
@@ -54,7 +86,6 @@ class App extends Component {
     newResults.lat = json.lat;
     newResults.lon = json.lon;
     this.setState({testResults: newResults})
-    console.log(newResults);
   }
 
 
@@ -104,6 +135,7 @@ class App extends Component {
       }
       this.addItem(postData);
       this.setState({testResults: newTest, calculating: false, allSpeeds: newArr, packetIndex: 0})
+      this.getRanking();
       console.log(newTest);
     }
   }
@@ -118,7 +150,7 @@ class App extends Component {
           <HistoryGB/>
         </div>
       </div>
-      <RankBG/>
+      <RankList ranks={this.state.ranks}/>
     </div>);
   }
 
