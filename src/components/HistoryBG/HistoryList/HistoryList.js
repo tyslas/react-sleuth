@@ -40,22 +40,33 @@ class HistoryList extends Component {
       var dateYear = date.getFullYear()
       var dateMonth = date.getMonth() + 1
       var dateDay = date.getDate()
-      var timeHours = (date.getUTCHours()<10?'0':'') + date.getUTCHours()
-      var timeMinutes = (date.getUTCMinutes()<10?'0':'') + date.getUTCMinutes()
-      var formatedDate = dateMonth + "/" + dateDay + "/" +dateYear + " " + timeHours + ":" + timeMinutes
-      dateArr.push(formatedDate)
+      var nightDay = "AM"
+      if(date.getHours()<12){
+        nightDay = "AM"
+      }else{
+        nightDay = "PM"
+      }
+      var timeHours = (date.getHours()<10?'0':'') + date.getHours()
+      var timeMinutes = (date.getMinutes()<10?'0':'') + date.getMinutes() + " " + nightDay
+      var formattedDate = dateMonth + "/" + dateDay + "/" +dateYear + " " + timeHours + ":" + timeMinutes
+      dateArr.push(formattedDate)
     }
 
     for(var i = dateArr.length; i--;){
       formatDateArr.push(dateArr[i])
     }
-    
+
     this.setState({timeStampFormatted: formatDateArr})
   }
 
+
   render() {
     const historyList = this.state.ipHistory
-    return historyList.map((ip,index)=>{
+    const reversedHistList = []
+    for(var i = historyList.length; i--;){
+      reversedHistList.push(historyList[i])
+    }
+    return reversedHistList.map((ip,index)=>{
       return (
         <History
           dl_speed={ip.dl_speed}
