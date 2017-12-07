@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import './App.css';
+import './index.css';
+
 import Tester from './components/Tester'
 import speedTest from './speedTest'
 import RankList from './components/RankBG/RankList/RankList'
-import HistoryGB from './components/HistoryBG/HistoryBG'
+import HistoryBG from './components/HistoryBG/HistoryBG'
 
 class App extends Component {
   constructor() {
@@ -143,14 +145,16 @@ class App extends Component {
   render() {
     return (<div>
       <div className="top-main">
-        <div>
+        <div className="historyBG-container">
           <Tester testSpeed={this.state.testResults.speed} currentSpeed={this.state.currentSpeed} runTest={this.runTest.bind(this)} calculate={this.calculate} calculating={this.state.calculating} connection={this.state.connection}/>
         </div>
         <div>
-          <HistoryGB/>
+          <HistoryBG />
         </div>
       </div>
-      <RankList ranks={this.state.ranks}/>
+      <div className="rankBG-container">
+        <RankList ranks={this.state.ranks}/>
+      </div>
     </div>);
   }
 

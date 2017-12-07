@@ -12,10 +12,12 @@
 }
 
 .rank-container {
-  margin: 20px;
-  background: #f6f6f6;
-  border-radius: 5px;
+  background: #B3C4BA;
+  border-radius: 30px;
   padding: 10px;
+  width: 100%;
+  margin-left: 22rem;
+  border: 5px solid #939F75;
 }
 
 .rank-container h1 {

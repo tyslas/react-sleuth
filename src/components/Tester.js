@@ -22,18 +22,18 @@ class Tester extends Component {
     if (this.props.calculating) {
       this.props.runTest();
       return (<div className="aligner">
-        <img className="card-img-top test-running" src={this.selectGif()} alt="sleuth"/>
+        <img className="card-img-top test-running sloth" src={this.selectGif()} alt="sleuth"/>
         <p className="while-running">{this.props.currentSpeed} Mbps</p>
       </div>)
     } else {
       if(this.props.connection === false){
         return (<div className="aligner">
-          <img className="card-img-top test-running" src='https://c402277.ssl.cf1.rackcdn.com/photos/6526/images/hero_small/sloth_%28c%29_Jorge_Salas_International_Expeditions.JPG?1394634201' alt="sleuth"/>
+          <img className="card-img-top test-running sloth" src='https://c402277.ssl.cf1.rackcdn.com/photos/6526/images/hero_small/sloth_%28c%29_Jorge_Salas_International_Expeditions.JPG?1394634201' alt="sleuth"/>
           <p>Check your Interent Connection</p>
         </div>)
       }
       return (<div className="aligner">
-        <img className="card-img-top test-running" src="https://media.mnn.com/assets/images/2017/01/Sloth-Hanging-Tree-Branch.jpg.638x0_q80_crop-smart.jpg" alt="sleuth"/>
+        <img className="card-img-top test-running sloth" src="https://media.mnn.com/assets/images/2017/01/Sloth-Hanging-Tree-Branch.jpg.638x0_q80_crop-smart.jpg" alt="sleuth"/>
         <p className="done-running">{this.props.testSpeed} Mbps</p>
       </div>)
     }
@@ -51,11 +51,9 @@ class Tester extends Component {
     return (<div className="card border-tester">
       {this.isCalculating()}
       <div className="card-body aligner">
-        {/* <h4 className="card-title">Run Sleuth</h4> */}
       <form onSubmit={this.props.calculate}>
-        <button disabled={this.checkDisabled()} className="btn btn-primary">Run Sleuth</button>
+        <button disabled={this.checkDisabled()} className="btn sloth-btn">Run Sleuth</button>
       </form>
-        {/* {this.isCalculating()} */}
     </div>
     </div>);
   }

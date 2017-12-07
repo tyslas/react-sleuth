@@ -14,12 +14,13 @@ class RankList extends Component {
   }
 
   render() {
-    return (<div className="rank-container">
-      <div>
-        <h1>ISP Rankings</h1>
-      </div>
-      {this.mapRanks()}
-    </div>)
+    return (
+      <div className="rank-container">
+        <div>
+          <h1 className="titles">ISP Rankings</h1>
+        </div>
+        {this.mapRanks()}
+      </div>)
   }
 }
 

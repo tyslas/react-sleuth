@@ -5,7 +5,7 @@ const Rank = (props) => {
     return (
       <div className="rank">
         <ul className="list-group">
-          <h3 className="list-group-item"><span className="label label-default">{props.position}</span> {props.name}, {props.dl_avg.toFixed(2)}</h3>
+          <h3 className="list-group-item titles"><span className="label label-default label-color">{props.position}</span> {props.name}, {props.dl_avg.toFixed(2)}</h3>
         </ul>
       </div>
     );

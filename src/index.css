@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: "Open Sans", sans-serif;
   background: #628193;
 }
 
@@ -37,17 +37,31 @@ header {
 .chrome-ext{
   font-family: 'Open Sans', sans-serif;
 }
+
+.chrome-ext a:hover {
+  text-decoration: none;
+  color: white;
+}
 .historyBG-container{
-  margin: -25px 0 0 0;
+  margin: 5px;
   border: 5px solid #939F75;
   padding: 11px;
   border-radius: 30px;
+  background: #B3C4BA;
 }
 
 .history_container {
   display: flex;
   flex-direction: column;
   overflow: scroll;
-  height: 360px;
+  height: 415px;
   width: 100%;
+}
+
+.rankBG-container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  width: 75%;
 }
