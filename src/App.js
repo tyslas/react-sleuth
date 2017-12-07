@@ -189,13 +189,9 @@ class App extends Component {
           <Tester testSpeed={this.state.testResults.speed} currentSpeed={this.state.currentSpeed} runTest={this.runTest.bind(this)} calculate={this.calculate} calculating={this.state.calculating} connection={this.state.connection}/>
         </div>
         <div>
-<<<<<<< HEAD
-          <HistoryBG />
-=======
           <HistoryList ipAddress={this.state.testResults.IP}
           ipHistory={this.state.ipHistory} timeStampFormatted={this.state.timeStampFormatted}
         ispProvider={this.state.testResults.isp}/>
->>>>>>> b9cda500e9993ea2bc9d7e35f26c7c91d2ee1894
         </div>
       </div>
       <div className="rankBG-container">
