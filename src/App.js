@@ -1,11 +1,9 @@
 import React, {Component} from 'react';
 import './App.css';
 import Tester from './components/Tester'
-import History from './components/History'
 import speedTest from './speedTest'
 import RankBG from './components/RankBG/RankBG'
-
-// http://ip-api.com/json/
+import HistoryGB from './components/HistoryBG/HistoryBG'
 
 class App extends Component {
   constructor() {
@@ -110,12 +108,14 @@ class App extends Component {
   }
 
   render() {
-
     return (<div>
-      <header>Sleuth</header>
       <div className="top-main">
-        <Tester testSpeed={this.state.testResults.speed} currentSpeed={this.state.currentSpeed} runTest={this.runTest.bind(this)} calculate={this.calculate} calculating={this.state.calculating} connection={this.state.connection}/>
-        <History/>
+        <div>
+          <Tester testSpeed={this.state.testResults.speed} currentSpeed={this.state.currentSpeed} runTest={this.runTest.bind(this)} calculate={this.calculate} calculating={this.state.calculating} connection={this.state.connection}/>
+        </div>
+        <div>
+          <HistoryGB/>
+        </div>
       </div>
       <RankBG/>
     </div>);
