@@ -27,13 +27,15 @@ class App extends Component {
     }
   }
 
-  // async componentDidMount() {
-  //   const response = await fetch("https://galvanize-cors-proxy.herokuapp.com/https://infinite-beach-55234.herokuapp.com/tests/isp/Zayo%20Bandwidth")
-  //   const json = await response.json()
-  //   console.log(json);
-  //   // this.setState({data: json["_embedded"].tests})
-  // }
-  //
+  async componentDidMount() {
+    let newResults = this.state.testResults;
+    const response = await  fetch("https://galvanize-cors-proxy.herokuapp.com/http://httpbin.org/ip")
+    const json = await response.json()
+    let newIp = json.origin.split(',')
+    newResults.IP = newIp[0];
+    this.setState({testResults: newResults})
+  }
+
   async addItem(data) {
     const response = await fetch("https://galvanize-cors-proxy.herokuapp.com/https://infinite-beach-55234.herokuapp.com/tests/", {
       method: 'POST',
@@ -43,22 +45,21 @@ class App extends Component {
         'Accept': 'application/json'
       }
     })
-    // this.componentDidMount();
   }
 
   async getISP() {
-    const response = await fetch('http://ip-api.com/json/')
+    let newResults = this.state.testResults;
+    const response = await fetch('https://galvanize-cors-proxy.herokuapp.com/http://ip-api.com/json/' + newResults.IP)
     const json = await response.json()
     console.log(json);
-    this.setState({
-      testResults: {
-        IP: json.query,
-        isp: json.isp,
-        lat: json.lat,
-        lon: json.lon
-      }
-    })
+    newResults.isp = json.isp;
+    newResults.lat = json.lat;
+    newResults.lon = json.lon;
+    this.setState({testResults: newResults})
+    console.log(newResults);
   }
+
+
 
   calculate = (e) => {
     e.preventDefault();
@@ -112,7 +113,6 @@ class App extends Component {
   render() {
 
     return (<div>
-      <header>Sleuth</header>
       <div className="top-main">
         <Tester testSpeed={this.state.testResults.speed} currentSpeed={this.state.currentSpeed} runTest={this.runTest.bind(this)} calculate={this.calculate} calculating={this.state.calculating} connection={this.state.connection}/>
         <History/>
